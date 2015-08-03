@@ -1,27 +1,16 @@
-Empty Plugin for Retroshare
-
-This is an empty plugin for retroshare with no networking.
-It is the LinksCloud plugin stripped down.
-I have perhaps done a few silly things, like hardcode the translations.
-Please do send a pull request with any further fixes/tweaks/strippings.
+This is a test plugin that lets you chat with minimal code!
 
 
-## Quick Start:
 
-If you know what you are doing, do that!
-
-otherwise
-
-### Make a new user
-```
-  useradd retrotester
-```
-### inspect then run the build and test script (KDE)
-```
-  cat testit.sh
-  ./testit.sh
-```
-### Exit the new instance of retroshare when done testing
+//include easy transport
+    #include "interface/rsEasyTransport.h"
 
 
+//connect
+
+    connect(rsEasyTransport->mNotify, SIGNAL(NeMsgArrived(RsPeerId,QString)), this , SLOT(NeMsgArrived(RsPeerId,QString)));
+
+//send message
+
+    rsEasyTransport->msg_all(ui->lineEdit->text().toStdString());
 
